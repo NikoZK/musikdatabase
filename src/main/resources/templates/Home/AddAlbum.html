@@ -1,0 +1,33 @@
+<form action="/AddAlbum" method="POST">
+
+    <label for="title">Album Title:</label>
+    <input type="text" id="title" name="title" required><br><br>
+
+    <label for="kunstner_id">Select Artist:</label>
+    <select name="kunstner_id" id="kunstner_id" required>
+        <option value="">-- Select Artist --</option>
+        <tr th:each="kunstner : ${kunstnere}">
+            <option th:value="${kunstner.kunstner_id}" th:text="${kunstner.name}"></option>
+        </tr>
+    </select><br><br>
+
+    <label for="release_year">Release Year:</label>
+    <input type="number" id="release_year" name="release_year" required><br><br>
+
+    <label for="pladeselskab">Pladeselskab:</label>
+    <input type="text" id="pladeselskab" name="pladeselskab" required><br><br>
+
+    <h3>Tracks</h3>
+    <div id="tracks">
+        <div class="track">
+            <label for="title">Track Title:</label>
+            <input type="text" name="tracks[0].title" required><br><br>
+
+            <label for="spilletid">Track spilletid:</label>
+            <input type="number" name="tracks[0].spilletid" required placeholder="I sekunder"><br><br>
+        </div>
+
+    </div>
+
+    <button type="submit">Add Album</button>
+</form>
