@@ -16,5 +16,7 @@ public class KunstnerService {
         return kunstnerRepo.fetchAll();
     }
 
-
+    public void addKunstner(Kunstner kunstner) {
+        kunstnerRepo.addKunstner(kunstner);
+    }
 }

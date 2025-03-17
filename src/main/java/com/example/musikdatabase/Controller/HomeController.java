@@ -12,7 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.sound.midi.Track;
 import java.util.List;
 
 @Controller
@@ -41,23 +42,40 @@ public class HomeController {
 
     @GetMapping("/AddAlbum")
     public String addAlbumForm(Model model) {
+        model.addAttribute("album", new Album());
         model.addAttribute("kunstnere", kunstnerService.fetchAll());
         return "home/AddAlbum";
     }
 
     @PostMapping("/AddAlbum")
-    public String addAlbum(@ModelAttribute Album album, @RequestParam List<Tracks> tracks) {
-        try {
-            albumService.addAlbum(album);
+    public String addAlbum(@ModelAttribute Album album, Model model) {
+        albumService.addAlbum(album);
 
-            for (Tracks track : tracks) {
-                track.setAlbum_id(album.getAlbum_id());
-                tracksService.addTrack(track);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "error";
-        }
+        return "redirect:/";
+    }
+
+    @GetMapping("/AddArtist")
+    public String showAddArtistForm() {
+        return "home/AddArtist";
+    }
+
+    @PostMapping("/AddArtist")
+    public String addArtist(@ModelAttribute Kunstner kunstner, Model model) {
+            kunstnerService.addKunstner(kunstner);
+
+        return "redirect:/";
+    }
+
+    @GetMapping("/AddTrack")
+    public String showAddTrackForm(Model model) {
+        model.addAttribute("albums", albumService.fetchAll());
+        return "home/AddTrack";
+    }
+
+    @PostMapping("/AddTrack")
+    public String addTrack(@ModelAttribute Tracks tracks, Model model) {
+
+        tracksService.addTrack(tracks);
 
         return "redirect:/";
     }

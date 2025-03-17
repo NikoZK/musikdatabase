@@ -26,8 +26,8 @@ public class KunstnerRepo {
         return template.query(sql, new Object[]{albumId}, new BeanPropertyRowMapper<>(Tracks.class));
     }
 
-    public void addKunstner(Kunstner k){
-        String sql = "INSERT INTO Kunstner (kunstner_id, name, land, alder) VALUES (?, ?, ?)";
-        template.update(sql, k.getKunstner_id(), k.getName(), k.getLand());
+    public void addKunstner(Kunstner k) {
+        String sql = "INSERT INTO kunstner (name, land) VALUES (?, ?)";
+        template.update(sql, k.getName(), k.getLand());
     }
 }

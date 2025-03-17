@@ -17,8 +17,9 @@ public class AlbumService {
         return albumRepo.fetchAll();
     }
 
-    public void addAlbum(Album album) {
+    public int addAlbum(Album album) {
         albumRepo.addAlbum(album);
+        return 0;
     }
 
 }

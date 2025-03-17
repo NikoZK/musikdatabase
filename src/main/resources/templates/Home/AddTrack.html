@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a track</title>
+</head>
+<body>
+<form action="/AddTrack" method="POST">
+    <label for="title"> Navn: </label>
+    <input type="text" id="title" name="title" required> <br> <br>
+
+    <label for="spilletid">Spilletid i sekunder:</label>
+    <input type="number" id="spilletid" name="spilletid" required><br><br>
+
+    <label for="album_id">Select Album:</label>
+    <select name="album_id" id="album_id" required>
+        <option value="">-- Select Album --</option>
+        <tr th:each="album : ${albums}">
+            <option th:value="${album.album_id}" th:text="${album.title}"></option>
+        </tr>
+    </select><br><br>
+
+    <button type="submit">Add Track(s)</button>
+</form>
+</body>
+</html>

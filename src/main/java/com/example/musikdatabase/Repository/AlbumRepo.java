@@ -18,7 +18,7 @@ public class AlbumRepo {
         String sql = "SELECT a.album_id, a.title, a.release_year, a.pladeselskab, k.name AS artist_name " +
                 "FROM album a " +
                 "JOIN kunstner k ON a.kunstner_id = k.kunstner_id " +
-                "ORDER BY a.release_year DESC";
+                "ORDER BY a.album_id ASC";
 
         List<Album> albums = template.query(sql, (rs, rowNum) -> {
             Album album = new Album();

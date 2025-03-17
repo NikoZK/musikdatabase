@@ -12,8 +12,8 @@ public class TracksService {
     @Autowired
     private TracksRepo tracksRepo;
 
-    public void addTrack(Tracks track) {
-        tracksRepo.addTrack(track);
+    public void addTrack(Tracks tracks) {
+        tracksRepo.addTrack(tracks);
     }
 
     public List<Tracks> fetchByAlbumId(int albumId) {
