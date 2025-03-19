@@ -7,33 +7,33 @@
 </head>
 <body>
 
-<h1 class="center">My Goat Album List</h1>
+<h1 class="center">Min Goat Album Liste</h1>
 <div>
     <div class="center">
-<a  href="/AddAlbum"> <button> Add album</button> </a>
-    <a href="/AddArtist"> <button> Add artist</button> </a>
-    <a href="/AddTrack"> <button> Add tracks</button> </a>
+<a  href="/AddAlbum"> <button> Tilføj album</button> </a>
+    <a href="/AddArtist"> <button> Tilføj artist</button> </a>
+    <a href="/AddTrack"> <button> Tilføj tracks</button> </a>
     </div> <br>
 <table >
     <thead>
     <tr>
-        <th>Album ID</th>
-        <th>Title</th>
+
+        <th>Titel</th>
         <th>Artist</th>
-        <th>Release Year</th>
-        <th>Label</th>
-        <th>Favorite Tracks</th>
+        <th>Udgivelsesår</th>
+        <th>Pladeselskab</th>
+        <th>Yndlings numre</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="album : ${albums}">
-        <td th:text="${album.album_id}"></td>
+
         <td th:text="${album.title}"></td>
-        <td th:text="${album.kunstner_name}"></td> <!-- Display the artist name -->
+        <td th:text="${album.kunstner_name}"></td>
         <td th:text="${album.release_year}"></td>
         <td th:text="${album.pladeselskab}"></td>
 
-        <!-- Loop through the tracks of each album -->
+
         <td>
             <ul>
                 <li th:each="track : ${album.tracks}" th:text="${track.title}"></li>
@@ -42,6 +42,17 @@
     </tr>
     </tbody>
 </table>
+</div> <br>
+
+<div class="center">
+    <a  href="/DeleteAlbum"> <button> Slet et album</button> </a>
+    <a  href="/UpdateAlbum"> <button> Opdater et album</button> </a>
+    <a  href="/DeleteTrack"> <button> Slet et track</button> </a>
 </div>
+
+<div class="center">
+
+</div>
+
 </body>
 </html>

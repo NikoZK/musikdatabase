@@ -1,11 +1,8 @@
 package com.example.musikdatabase.Service;
-
 import com.example.musikdatabase.Model.Album;
 import com.example.musikdatabase.Repository.AlbumRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-
 import java.util.List;
 
 @Service
@@ -17,9 +14,19 @@ public class AlbumService {
         return albumRepo.fetchAll();
     }
 
-    public int addAlbum(Album album) {
+    //<th>Album ID</th>
+    //<td th:text="${album.album_id}"></td>
+
+    public void addAlbum(Album album) {
         albumRepo.addAlbum(album);
-        return 0;
+
     }
 
+    public void DeleteAlbum(Album album) {
+        albumRepo.deleteAlbum(album);
+    }
+
+    public void UpdateAlbum(Album album) {
+        albumRepo.updateAlbum(album);
+    }
 }

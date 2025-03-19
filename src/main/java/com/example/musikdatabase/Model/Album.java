@@ -1,5 +1,4 @@
 package com.example.musikdatabase.Model;
-
 import java.util.List;
 
 public class Album {

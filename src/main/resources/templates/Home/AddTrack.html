@@ -2,25 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add a track</title>
+    <title>Tilføj et track</title>
+    <link rel="stylesheet" type="text/css" href="MyCSS.css">
 </head>
-<body>
-<form action="/AddTrack" method="POST">
-    <label for="title"> Navn: </label>
+<body class="bodyContainer">
+<form class="formContainer" action="/AddTrack" method="POST">
+    <label for="title"> Titel: </label>
     <input type="text" id="title" name="title" required> <br> <br>
 
-    <label for="spilletid">Spilletid i sekunder:</label>
-    <input type="number" id="spilletid" name="spilletid" required><br><br>
+    <label for="spilletid">Spilletid: </label>
+    <input type="number" id="spilletid" name="spilletid"
+           required placeholder="sekunder"> <br><br>
 
-    <label for="album_id">Select Album:</label>
+
+    <label for="album_id">Vælg album:</label>
     <select name="album_id" id="album_id" required>
-        <option value="">-- Select Album --</option>
+        <option value=""- Vælg Album -</option>
         <tr th:each="album : ${albums}">
             <option th:value="${album.album_id}" th:text="${album.title}"></option>
         </tr>
     </select><br><br>
 
-    <button type="submit">Add Track(s)</button>
+    <button class="button" type="submit"> <span class="label"> Tilføj track </span>
+        <span class="gradient-container">
+    <span class="gradient"></span>
+  </span></button>
+    <br>
+    <div >
+        <a href="/">
+            <button type="button">Tilbage</button>
+        </a>
+    </div>
 </form>
 </body>
 </html>

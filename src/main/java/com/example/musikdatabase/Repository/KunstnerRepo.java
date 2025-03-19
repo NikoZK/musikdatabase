@@ -1,20 +1,16 @@
 package com.example.musikdatabase.Repository;
-
-
 import com.example.musikdatabase.Model.Kunstner;
 import com.example.musikdatabase.Model.Tracks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository
 public class KunstnerRepo {
     @Autowired
     JdbcTemplate template;
-
 
     public List<Kunstner> fetchAll() {
         String sql = "SELECT * FROM kunstner";

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slet et album</title>
+    <link rel="stylesheet" type="text/css" href="MyCSS.css">
+</head>
+<body class="bodyContainer">
+<form class="formContainer" action="/DeleteAlbum" method="POST">
+<label for="album_id">Vælg album:</label>
+<select name="album_id" id="album_id" required>
+    <option value="">- Vælg album -</option>
+    <tr th:each="album : ${albums}">
+        <option th:value="${album.album_id}" th:text="${album.title}"></option>
+    </tr>
+</select>
+
+    <button class="button" type="submit"> <span class="label"> Slet album </span>
+        <span class="gradient-container">
+    <span class="gradient"></span>
+  </span></button><br>
+
+    <div >
+        <a href="/">
+            <button type="button">Tilbage</button>
+        </a>
+    </div>
+</form>
+</body>
+</html>

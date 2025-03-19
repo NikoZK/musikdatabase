@@ -1,5 +1,4 @@
 package com.example.musikdatabase.Model;
-
 public class Tracks {
     private int track_id;
     private String title;

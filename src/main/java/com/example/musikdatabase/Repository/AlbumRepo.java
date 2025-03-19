@@ -1,11 +1,9 @@
 package com.example.musikdatabase.Repository;
-
 import com.example.musikdatabase.Model.Album;
 import com.example.musikdatabase.Model.Tracks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository
@@ -13,12 +11,11 @@ public class AlbumRepo {
     @Autowired
     JdbcTemplate template;
 
-
     public List<Album> fetchAll(){
         String sql = "SELECT a.album_id, a.title, a.release_year, a.pladeselskab, k.name AS artist_name " +
                 "FROM album a " +
                 "JOIN kunstner k ON a.kunstner_id = k.kunstner_id " +
-                "ORDER BY a.album_id ASC";
+                "ORDER BY a.release_year ASC";
 
         List<Album> albums = template.query(sql, (rs, rowNum) -> {
             Album album = new Album();
@@ -51,6 +48,13 @@ public class AlbumRepo {
         template.update(sql, a.getAlbum_id(), a.getTitle(), a.getKunstner_id(), a.getRelease_year(), a.getPladeselskab());
     }
 
+public void deleteAlbum(Album a){
+    String sql = "DELETE FROM album WHERE album_id = ?";
+        template.update(sql,a.getAlbum_id());
+    }
 
-
+    public void updateAlbum(Album a){
+        String sql = "UPDATE album SET title = ?, release_year = ?, pladeselskab = ? WHERE album_id = ?";
+        template.update(sql, a.getTitle(), a.getRelease_year(), a.getPladeselskab(), a.getAlbum_id());
+    }
 }

@@ -2,19 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add artist</title>
+    <title>Tilføj artist</title>
+    <link rel="stylesheet" type="text/css" href="MyCSS.css">
 </head>
-<body>
-<form action="/AddArtist" method="POST">
+<body class="bodyContainer">
+<form class="formContainer" action="/AddArtist" method="POST">
 <label for="name"> Navn: </label>
     <input type="text" id="name" name="name" required> <br>
 
     <label for="land">Land:</label>
-    <input type="text" id="land" name="land" required><br>
+    <input type="text" id="land" name="land" required><br><br>
+
+    <button class="button" type="submit"><span class="label">Tilføj artist </span>
+        <span class="gradient-container">
+    <span class="gradient"></span>
+  </span></button>
+
+    <br>
+    <br>
 
 
+        <a href="/">
+            <button type="button">Tilbage</button>
+        </a>
 
-    <button type="submit">Add Artist</button>
 </form>
 </body>
 </html>

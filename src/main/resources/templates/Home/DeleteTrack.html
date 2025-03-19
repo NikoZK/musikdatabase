@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slet track</title>
+    <link rel="stylesheet" type="text/css" href="MyCSS.css">
+</head>
+<body class="bodyContainer">
+<form class="formContainer" action="/DeleteTrack" method="POST">
+    <label for="track_id">Vælg track:</label>
+    <select name="track_id" id="track_id" required>
+        <option value="">- Vælg track -</option>
+        <option th:each="track : ${tracks}" th:value="${track.track_id}" th:text="${track.title}"></option>
+
+    </select>
+
+    <button class="button" type="submit"> <span class="label"> Slet track </span>
+        <span class="gradient-container">
+    <span class="gradient"></span>
+  </span></button> <br>
+
+    <div >
+        <a href="/">
+            <button type="button">Tilbage</button>
+        </a>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Opdater album</title>
+    <link rel="stylesheet" type="text/css" href="MyCSS.css">
+</head>
+<body class="bodyContainer">
+<form class="formContainer" action="/UpdateAlbum" method="POST">
+    <label for="album_id">Vælg album:</label>
+    <select name="album_id" id="album_id" required>
+        <option value="">- Album -</option>
+            <option th:each="album : ${albums}" th:value="${album.album_id}" th:text="${album.title}"></option>
+    </select>
+
+    <div>
+    <label for="title">Titel:</label>
+    <input type="text" id="title" name="title"><br><br>
+
+    <label for="release_year">Udgivelses år:</label>
+    <input type="number" id="release_year" name="release_year"><br><br>
+
+    <label for="pladeselskab">Pladeselskab:</label>
+    <input type="text" id="pladeselskab" name="pladeselskab"><br><br>
+    </div>
+
+    <button class="button" type="submit"> <span class="label"> Opdater album </span>
+        <span class="gradient-container">
+    <span class="gradient"></span>
+  </span></button><br>
+
+    <div >
+        <a href="/">
+            <button type="button">Tilbage</button>
+        </a>
+    </div>
+</form>
+</body>
+</html>

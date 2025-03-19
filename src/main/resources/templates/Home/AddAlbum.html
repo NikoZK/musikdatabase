@@ -1,22 +1,32 @@
-<form action="/AddAlbum" method="POST">
+<form class="formContainer" action="/AddAlbum" method="POST">
+    <link rel="stylesheet" type="text/css" href="MyCSS.css">
 
-    <label for="title">Album Title:</label>
+    <label for="title">Album Titel:</label>
     <input type="text" id="title" name="title" required><br><br>
 
-    <label for="kunstner_id">Select Artist:</label>
+    <label for="kunstner_id">Vælg artist:</label>
     <select name="kunstner_id" id="kunstner_id" required>
-        <option value="">-- Select Artist --</option>
+        <option value="">- Artister -</option>
         <tr th:each="kunstner : ${kunstnere}">
             <option th:value="${kunstner.kunstner_id}" th:text="${kunstner.name}"></option>
         </tr>
     </select><br><br>
 
-    <label for="release_year">Release Year:</label>
+    <label for="release_year">Udgivelses år:</label>
     <input type="number" id="release_year" name="release_year" required><br><br>
 
     <label for="pladeselskab">Pladeselskab:</label>
     <input type="text" id="pladeselskab" name="pladeselskab" required><br><br>
 
+    <button class="button" type="submit"> <span class="label"> Tilføj Album </span> <span class="gradient-container">
+    <span class="gradient"></span>
+  </span></button>
 
-    <button type="submit">Add Album</button>
+    <br>
+
+    <div >
+        <a href="/">
+            <button type="button">Tilbage</button>
+        </a>
+    </div>
 </form>
